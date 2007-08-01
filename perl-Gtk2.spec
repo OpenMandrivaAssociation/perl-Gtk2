@@ -62,7 +62,6 @@ This package contains documentation of the Gtk2 module.
 %patch7 -p0
 %patch21 -p0 -b .tv
 %patch23 -p0 -b .except
-find -type d -name CVS | rm -rf 
 perl Makefile.PL INSTALLDIRS=vendor
 chmod 755 gtk-demo/*.pl examples/*.pl
 
