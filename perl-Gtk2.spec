@@ -19,8 +19,8 @@ Patch23:	Gtk2-1.023-exception-trapping.patch
 URL:		http://gtk2-perl.sf.net/
 BuildRequires:	gtk+2-devel >= %gtk_require
 BuildRequires:	perl-devel
-BuildRequires:	perl-ExtUtils-Depends
-BuildRequires:	perl-ExtUtils-PkgConfig
+BuildRequires:	perl-ExtUtils-Depends >= 0.2
+BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
 BuildRequires:	perl-Glib >= %perl_glib_require
 BuildRequires:	perl-Cairo >= %cairo_require
 Requires:	gtk+2
