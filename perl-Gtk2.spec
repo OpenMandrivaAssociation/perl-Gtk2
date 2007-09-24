@@ -1,6 +1,6 @@
 %define module	Gtk2
 %define	name	perl-%{module}
-%define	version	1.155
+%define	version	1.160
 %define	release	%mkrel 1
 %define perl_glib_require 1.152
 %define gtk_require 2.11.0
@@ -16,6 +16,8 @@ Source:		http://prdownloads.sourceforge.net/gtk2-perl/%{module}-%{version}.tar.b
 Patch7:		Gtk2-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch 
+# (tv) it' bad but we've to bind ->set_usize in order to workaround #32613:
+Patch24:	Gtk2-bind_set_usize.patch
 URL:		http://gtk2-perl.sf.net/
 BuildRequires:	gtk+2-devel >= %gtk_require
 BuildRequires:	perl-devel
@@ -62,12 +64,15 @@ This package contains documentation of the Gtk2 module.
 %patch7 -p0
 %patch21 -p0 -b .tv
 %patch23 -p0 -b .except
+%patch24 -p0 -b .except
 perl Makefile.PL INSTALLDIRS=vendor
 chmod 755 gtk-demo/*.pl examples/*.pl
 
 %build
 %make OPTIMIZE="%{optflags}"
-#%make test || :
+
+%check
+%make test
 
 %install
 rm -rf %{buildroot}
