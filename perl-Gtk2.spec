@@ -1,6 +1,6 @@
 %define module	Gtk2
 %define	name	perl-%{module}
-%define	version	1.160
+%define	version	1.161
 %define	release	%mkrel 1
 %define perl_glib_require 1.152
 %define gtk_require 2.11.0
@@ -69,7 +69,7 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 %make OPTIMIZE="%{optflags}"
 
 %check
-#%make test
+%make test
 
 %install
 rm -rf %{buildroot}
