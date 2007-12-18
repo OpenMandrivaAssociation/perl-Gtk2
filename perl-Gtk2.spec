@@ -1,8 +1,8 @@
 %define module	Gtk2
 %define	name	perl-%{module}
-%define	version	1.170
+%define	version	1.171
 %define	release	%mkrel 1
-%define perl_glib_require 1.152
+%define perl_glib_require 1.170
 %define gtk_require 2.11.0
 %define cairo_require 1.00
 
