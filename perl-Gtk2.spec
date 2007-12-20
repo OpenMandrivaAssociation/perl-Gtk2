@@ -39,6 +39,7 @@ Obsoletes:	perl-GTK2 < 0.1
 # (tv) libegg's code for status icon was merged in gtk+2.9.x:
 Provides:	perl-Gtk2-StatusIcon = %{version}-%{release}
 Obsoletes:	perl-Gtk2-StatusIcon <= 0.010
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This module provides perl access to the gtk+-2.x library.
