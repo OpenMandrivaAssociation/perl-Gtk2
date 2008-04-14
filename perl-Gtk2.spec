@@ -21,7 +21,7 @@ Patch25:	relocations-fixes.patch
 URL:		http://gtk2-perl.sf.net/
 BuildRequires:	gtk+2-devel >= %gtk_require
 BuildRequires:	perl-devel
-BuildRequires:	perl-ExtUtils-Depends >= 0.2
+BuildRequires:	perl-ExtUtils-Depends >= 0.300
 BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
 BuildRequires:	perl-Glib >= %perl_glib_require
 BuildRequires:	perl-Cairo >= %cairo_require
