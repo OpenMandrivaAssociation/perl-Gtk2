@@ -25,6 +25,8 @@ BuildRequires:	perl-ExtUtils-Depends >= 0.300
 BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
 BuildRequires:	perl-Glib >= %perl_glib_require
 BuildRequires:	perl-Cairo >= %cairo_require
+# for test suite:
+BuildRequires:	fontconfig
 Requires:	gtk+2
 Requires:	libgtk+2 => %gtk_require
 Requires:	perl-Glib >= %perl_glib_require
