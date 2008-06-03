@@ -1,7 +1,7 @@
 %define module	Gtk2
 %define	name	perl-%{module}
-%define	version	1.182
-%define	release	%mkrel 2
+%define	version	1.183
+%define	release	%mkrel 1
 %define perl_glib_require 1.172
 %define gtk_require 2.11.0
 %define cairo_require 1.00
@@ -26,7 +26,9 @@ BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
 BuildRequires:	perl-Glib >= %perl_glib_require
 BuildRequires:	perl-Cairo >= %cairo_require
 # for test suite:
-BuildRequires:	fontconfig fonts-ttf-dejavu
+BuildRequires:	fontconfig
+BuildRequires:	fonts-ttf-dejavu
+BuildRequires:  x11-server-xvfb
 Requires:	gtk+2
 Requires:	libgtk+2 => %gtk_require
 Requires:	perl-Glib >= %perl_glib_require
@@ -75,7 +77,7 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 %make OPTIMIZE="%{optflags}"
 
 %check
-%make test
+xvfb-run %make test
 
 %install
 rm -rf %{buildroot}
