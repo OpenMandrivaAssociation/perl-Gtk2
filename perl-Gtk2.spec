@@ -1,10 +1,15 @@
+%define _default_patch_fuzz        2
+%define Werror_cflags %nil
+
+
 %define module	Gtk2
 %define	name	perl-%{module}
-%define	version	1.202
+%define	version	1.210
 %define	release	%mkrel 1
-%define perl_glib_require 1.172
+%define perl_glib_require 1.200
 %define gtk_require 2.11.0
 %define cairo_require 1.00
+%define pango_require 1.210
 
 Name:		%{name}
 Version:	%{version}
@@ -25,6 +30,7 @@ BuildRequires:	perl-ExtUtils-Depends >= 0.300
 BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
 BuildRequires:	perl-Glib >= %perl_glib_require
 BuildRequires:	perl-Cairo >= %cairo_require
+BuildRequires:	perl-Pango >= %pango_require
 # for test suite:
 BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
@@ -34,6 +40,7 @@ Requires:	libgtk+2 => %gtk_require
 Requires:	perl-Glib >= %perl_glib_require
 #	(misc) needed by /usr/lib/perl5/vendor_perl/5.8.7/i386-linux/Gtk2/Install/Files.pm
 Requires:	perl-Cairo >= %cairo_require
+Requires:	perl-Pango >= %pango_require
 #	Compatibility with mdk <= 9.2:
 Conflicts:	drakconf <= 9.3-21mdk
 Conflicts:	drakxtools-newt <= 9.3-14mdk
@@ -68,8 +75,8 @@ This package contains documentation of the Gtk2 module.
 %patch7 -p0
 %patch21 -p0 -b .tv
 %patch23 -p0 -b .except
-%patch24 -p0 -b .reloc
-%patch25 -p0 -b .relocfix
+#%patch24 -p0 -b .reloc
+#%patch25 -p0 -b .relocfix
 perl Makefile.PL INSTALLDIRS=vendor
 chmod 755 gtk-demo/*.pl examples/*.pl
 
