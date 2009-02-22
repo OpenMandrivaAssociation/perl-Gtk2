@@ -5,7 +5,7 @@
 %define module	Gtk2
 %define	name	perl-%{module}
 %define	version	1.211
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 %define perl_glib_require 1.212
 %define gtk_require 2.15.2
 %define cairo_require 1.00
@@ -41,6 +41,8 @@ Requires:	perl-Glib >= %perl_glib_require
 #	(misc) needed by /usr/lib/perl5/vendor_perl/5.8.7/i386-linux/Gtk2/Install/Files.pm
 Requires:	perl-Cairo >= %cairo_require
 Requires:	perl-Pango >= %pango_require
+# required to avoid warnings when loading
+Requires:   canberra-gtk
 #	Compatibility with mdk <= 9.2:
 Conflicts:	drakconf <= 9.3-21mdk
 Conflicts:	drakxtools-newt <= 9.3-14mdk
