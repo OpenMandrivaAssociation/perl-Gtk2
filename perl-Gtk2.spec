@@ -1,29 +1,30 @@
+%define upstream_name	 Gtk2
+%define	upstream_version 1.222
+
 %define _default_patch_fuzz        2
 %define Werror_cflags %nil
 
 
-%define module	Gtk2
-%define	name	perl-%{module}
-%define	version	1.221
-%define	release	%mkrel 1
 %define perl_glib_require 1.220
 %define gtk_require 2.16.0
 %define cairo_require 1.00
 %define pango_require 1.220
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Perl module for the gtk+-2.x library
 License:	GPL or Artistic
 Group:	  	Development/GNOME and GTK+
-Source:		http://prdownloads.sourceforge.net/gtk2-perl/%{module}-%{version}.tar.bz2
+Url:		http://gtk2-perl.sf.net/
+Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{upstream_name}-%{upstream_version}.tar.gz
 Patch7:		Gtk2-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch 
 Patch24:	relocations-2.patch
 Patch25:	relocations-fixes.patch
-URL:		http://gtk2-perl.sf.net/
+
 BuildRequires:	gtk+2-devel >= %gtk_require
 BuildRequires:	perl-devel
 BuildRequires:	perl-ExtUtils-Depends >= 0.300
@@ -35,6 +36,9 @@ BuildRequires:	perl-Pango >= %pango_require
 BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:  x11-server-xvfb
+
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+
 Requires:	gtk+2
 Requires:	libgtk+2 => %gtk_require
 Requires:	perl-Glib >= %perl_glib_require
@@ -54,7 +58,6 @@ Obsoletes:	perl-GTK2 < 0.1
 # (tv) libegg's code for status icon was merged in gtk+2.9.x:
 Provides:	perl-Gtk2-StatusIcon = %{version}-%{release}
 Obsoletes:	perl-Gtk2-StatusIcon <= 0.010
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This module provides perl access to the gtk+-2.x library.
@@ -73,7 +76,7 @@ This package contains documentation of the Gtk2 module.
 
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 %patch7 -p0
 %patch21 -p0 -b .tv
 %patch23 -p0 -b .except
@@ -99,20 +102,18 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root)
 %doc AUTHORS LICENSE
-%dir %{perl_vendorarch}/%{module}
-%{perl_vendorarch}/%{module}.pm
-%{perl_vendorarch}/%{module}/*.pm
-%{perl_vendorarch}/%{module}/*/*.pm
-%{perl_vendorarch}/%{module}/Install
+%dir %{perl_vendorarch}/%{upstream_name}
+%{perl_vendorarch}/%{upstream_name}.pm
+%{perl_vendorarch}/%{upstream_name}/*.pm
+%{perl_vendorarch}/%{upstream_name}/*/*.pm
+%{perl_vendorarch}/%{upstream_name}/Install
 %{perl_vendorarch}/auto/*
 
 %files doc
 %defattr(-, root, root)
 %doc gtk-demo examples
 %{_mandir}/*/*
-%dir %{perl_vendorarch}/%{module}
-%{perl_vendorarch}/%{module}/*.pod
-%{perl_vendorarch}/%{module}/*/*.pod
-%{perl_vendorarch}/%{module}/*/*/*.pod
-
-
+%dir %{perl_vendorarch}/%{upstream_name}
+%{perl_vendorarch}/%{upstream_name}/*.pod
+%{perl_vendorarch}/%{upstream_name}/*/*.pod
+%{perl_vendorarch}/%{upstream_name}/*/*/*.pod
