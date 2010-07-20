@@ -1,11 +1,11 @@
 %define upstream_name	 Gtk2
-%define	upstream_version 1.222
+%define	upstream_version 1.230
 
 %define _default_patch_fuzz        2
 %define Werror_cflags %nil
 
 
-%define perl_glib_require 1.220
+%define perl_glib_require 1.230
 %define gtk_require 2.16.0
 %define cairo_require 1.00
 %define pango_require 1.220
