@@ -12,7 +12,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Release:    %mkrel 3
 
 Summary:	Perl module for the gtk+-2.x library
 License:	GPL or Artistic
@@ -70,6 +70,7 @@ several other programs as well.
 %package doc
 Summary: Gtk2 documentation
 Group: Books/Computer books
+BuildArch: noarch
 
 %description doc
 This package contains documentation of the Gtk2 module.
