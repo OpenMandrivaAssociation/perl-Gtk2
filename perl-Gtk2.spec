@@ -1,18 +1,18 @@
 %define upstream_name	 Gtk2
-%define	upstream_version 1.230
+%define	upstream_version 1.232
 
 %define _default_patch_fuzz        2
 %define Werror_cflags %nil
 
 
-%define perl_glib_require 1.230
+%define perl_glib_require 1.232
 %define gtk_require 2.16.0
 %define cairo_require 1.00
 %define pango_require 1.220
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 7
+Release:    %mkrel 1
 
 Summary:	Perl module for the gtk+-2.x library
 License:	GPL or Artistic
@@ -24,7 +24,6 @@ Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch 
 Patch24:	relocations-2.patch
 Patch25:	relocations-fixes.patch
-Patch26:	perl-Gtk2-gdk2.22-keysyms.patch
 
 BuildRequires:	gtk+2-devel >= %gtk_require
 BuildRequires:	perl-devel
@@ -84,7 +83,10 @@ This package contains documentation of the Gtk2 module.
 %patch23 -p0 -b .except
 #%patch24 -p0 -b .reloc
 #%patch25 -p0 -b .relocfix
-%patch26 -p1 -b .gdk2.22-keysyms
+
+iconv -f iso-8859-1 -t utf-8 -o pm/Helper.pm{.utf8,}
+mv pm/Helper.pm{.utf8,}
+
 perl Makefile.PL INSTALLDIRS=vendor
 chmod 755 gtk-demo/*.pl examples/*.pl
 
