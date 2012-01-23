@@ -8,7 +8,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    4
+Release:    5
 Summary:	Perl module for the gtk+-2.x library
 License:	GPL or Artistic
 Group:	  	Development/GNOME and GTK+
