@@ -41,7 +41,6 @@ BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	x11-server-xvfb
 Requires:	gtk+2
-Requires:	libgtk+2 => %{gtk_require}
 Requires:	perl-Glib >= %{perl_glib_require}
 #	(misc) needed by /usr/lib/perl5/vendor_perl/5.8.7/i386-linux/Gtk2/Install/Files.pm
 Requires:	perl-Cairo >= %{cairo_require}
