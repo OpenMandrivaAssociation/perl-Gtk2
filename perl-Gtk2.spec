@@ -17,7 +17,7 @@ License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
 Url:		http://gtk2-perl.sf.net/
 Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{upstream_name}-%{upstream_version}.tar.gz
-Patch7:		Gtk2-gtk_exit.patch
+Patch7:		Gtk2-1.244-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch 
 Patch24:	relocations-2.patch
@@ -72,11 +72,11 @@ This package contains documentation of the Gtk2 module.
 
 %prep
 %setup -q -n %{upstream_name}-%{upstream_version}
-%patch7 -p0
-%patch21 -p0 -b .tv
-%patch23 -p0 -b .except
-#%patch24 -p0 -b .reloc
-#%patch25 -p0 -b .relocfix
+%patch7 -p1 -b .gtk_exit~
+%patch21 -p0 -b .tv~
+%patch23 -p0 -b .except~
+#patch24 -p0 -b .reloc~
+#patch25 -p0 -b .relocfix~
 perl Makefile.PL INSTALLDIRS=vendor
 chmod 755 gtk-demo/*.pl examples/*.pl
 
