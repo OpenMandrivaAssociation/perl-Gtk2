@@ -52,7 +52,7 @@ Suggests:	canberra-gtk
 Provides:	perl-Gtk2-StatusIcon = %{version}-%{release}
 Obsoletes:	perl-Gtk2-StatusIcon <= 0.010
 
-%define	__noautoreq	'perl\\(Gtk2::HBox\\)'
+%define	__noautoreq	'perl\\(Gtk2::(HBox|ScrolledWindow)\\)'
 
 %description
 This module provides perl access to the gtk+-2.x library.
