@@ -89,11 +89,11 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 
 %files
 %doc AUTHORS LICENSE META.yml NEWS README TODO examples
-%dir %{perl_vendorarch}/%{upstream_name}
+%{perl_vendorarch}/%{upstream_name}/
 %{perl_vendorarch}/%{upstream_name}.pm
-%{perl_vendorarch}/%{upstream_name}/*.pm
-%{perl_vendorarch}/%{upstream_name}/*/*.pm
-%{perl_vendorarch}/%{upstream_name}/Install
+%exclude %{perl_vendorarch}/%{upstream_name}/*.pod
+%exclude %{perl_vendorarch}/%{upstream_name}/*/*.pod
+%exclude %{perl_vendorarch}/%{upstream_name}/*/*/*.pod
 %{perl_vendorarch}/auto/*
 
 %files doc
