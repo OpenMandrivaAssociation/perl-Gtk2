@@ -90,7 +90,7 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 %makeinstall_std
 
 %files
-%doc AUTHORS LICENSE META.yml NEWS README TODO examples
+%doc AUTHORS LICENSE META.yml NEWS README TODO
 %{perl_vendorarch}/%{upstream_name}/
 %{perl_vendorarch}/%{upstream_name}.pm
 %exclude %{perl_vendorarch}/%{upstream_name}/*.pod
