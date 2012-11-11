@@ -1,0 +1,18 @@
+--- ./xs/GdkDrawable.xs.tv	2004-01-25 13:38:10.000000000 +0100
++++ ./xs/GdkDrawable.xs	2004-03-03 15:46:29.463511607 +0100
+@@ -332,6 +328,15 @@
+ 	gint width
+ 	gint height
+ 
++#include <X11/Xlib.h>
++#include <gdk/gdkx.h>
++## a very special function call, in order to force the X11 focus on a GdkDrawable
++void
++XSetInputFocus(GdkDrawable *drawable)
++    CODE:
++	    XSetInputFocus(GDK_DISPLAY(), GDK_WINDOW_XWINDOW(drawable), RevertToParent, CurrentTime);
++
++
+ #if GTK_CHECK_VERSION(2, 4, 0)
+ 
+ GdkImage *

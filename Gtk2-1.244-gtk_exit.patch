@@ -1,0 +1,13 @@
+--- Gtk2-1.244/xs/Gtk2.xs.gtk_exit~	2011-11-27 08:57:26.000000000 +0100
++++ Gtk2-1.244/xs/Gtk2.xs	2012-06-08 23:09:57.225889171 +0200
+@@ -384,6 +384,10 @@ gtk_get_option_group (class, open_defaul
+ 
+ #endif
+ 
++
++ ## void gtk_exit (gint error_code);
++void gtk_exit (gint error_code)
++
+  ##void           gtk_disable_setlocale    (void);
+ void gtk_disable_setlocale (class)
+     C_ARGS:

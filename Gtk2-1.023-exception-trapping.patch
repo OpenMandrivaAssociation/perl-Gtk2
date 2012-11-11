@@ -1,0 +1,44 @@
+--- ./xs/Gtk2.xs.except	2004-03-15 00:23:12.000000000 +0100
++++ ./xs/Gtk2.xs	2004-03-15 22:41:08.869908888 +0100
+@@ -99,6 +99,23 @@
+ 	g_hash_table_remove (key_snoopers, GUINT_TO_POINTER (id));
+ }
+ 
++void handle_one_exception (void) {
++     SV * exception = glib_perl_get_execept_errsv();
++     if (exception) {
++          sv_setsv(ERRSV, exception);
++          SvREFCNT_dec(exception);
++          glib_perl_set_execept_errsv(NULL);
++          croak(Nullch);
++     }
++}
++
++void exceptions_handler (void) {
++     if (gtk_main_level())
++          gtk_main_quit();
++     else handle_one_exception();
++}
++
++
+ MODULE = Gtk2		PACKAGE = Gtk2		PREFIX = gtk_
+ 
+ ##
+@@ -346,9 +365,17 @@
+ 	event
+ 
+ void
++gtk_croak_execeptions (class)
++    CODE:
++       glib_perl_set_execept_handler(&exceptions_handler);
++
++void
+ gtk_main (class)
+     C_ARGS:
+ 	/*void*/
++    CODE:
++     gtk_main();
++     handle_one_exception();
+ 
+ guint
+ gtk_main_level (class)

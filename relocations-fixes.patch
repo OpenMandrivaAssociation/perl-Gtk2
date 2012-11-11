@@ -1,0 +1,35 @@
+diff -p -up ./gtk2perl-private.h.tv ./gtk2perl-private.h
+--- ./gtk2perl-private.h.tv	2008-02-12 17:02:59.000000000 +0100
++++ ./gtk2perl-private.h	2008-02-12 16:53:39.000000000 +0100
+@@ -27,24 +27,24 @@
+ #include "gtk2perlinternal.h"
+ 
+ /* Implemented in GtkItemFactory.xs. */
+-__hidden__ GPerlCallback * gtk2perl_translate_func_create (SV * func, SV * data);
+-__hidden__ gchar * gtk2perl_translate_func (const gchar *path, gpointer data);
++GPerlCallback * gtk2perl_translate_func_create (SV * func, SV * data);
++gchar * gtk2perl_translate_func (const gchar *path, gpointer data);
+ 
+ /* Implemented in GtkRecentManager.xs */
+-__hidden__ const gchar ** gtk2perl_sv_to_strv (SV *sv);
+-__hidden__ SV * gtk2perl_sv_from_strv (const gchar **strv);
++gchar ** gtk2perl_sv_to_strv (SV *sv);
++SV * gtk2perl_sv_from_strv (const gchar **strv);
+ 
+ #if GTK_CHECK_VERSION (2, 6, 0)
+ /* Implemented in GtkTreeView.xs. */
+-__hidden__ GPerlCallback * gtk2perl_tree_view_row_separator_func_create (SV * func,
++GPerlCallback * gtk2perl_tree_view_row_separator_func_create (SV * func,
+ 									 SV * data);
+-__hidden__ gboolean gtk2perl_tree_view_row_separator_func (GtkTreeModel *model,
++gboolean gtk2perl_tree_view_row_separator_func (GtkTreeModel *model,
+ 							   GtkTreeIter  *iter,
+ 							   gpointer      data);
+ #endif
+ 
+ /* Implemented in PangoAttributes.xs. */
+-__hidden__ void gtk2perl_pango_attribute_register_custom_type (PangoAttrType type, const char *package);
++__hidden__ void gtk2perl_pango_attribute_register_custom_type (PangoAttrType type, const char *package);
+ 
+ #define GTK2PERL_PANGO_ATTR_REGISTER_CUSTOM_TYPE(attr, package)	\
+ {								\
