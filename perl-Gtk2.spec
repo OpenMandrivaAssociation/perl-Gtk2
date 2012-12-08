@@ -3,14 +3,9 @@
 
 %define Werror_cflags %{nil}
 
-%define perl_glib_require 1.233
-%define gtk_require 2.24.10
-%define cairo_require 1.00
-%define pango_require 1.220
-
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	1
+Release:	4
 
 Summary:	Perl module for the gtk+-2.x library
 License:	GPL or Artistic
@@ -20,31 +15,24 @@ Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{upstream_name}-%{upstrea
 Patch7:		Gtk2-1.244-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch 
-Patch24:	relocations-2.patch
-Patch25:	relocations-fixes.patch
 
 BuildRequires:	perl(Cairo) >= 1.0.0
 BuildRequires:	perl(ExtUtils::Depends) >= 0.300.0
 BuildRequires:	perl(ExtUtils::MakeMaker)
-BuildRequires:	perl(ExtUtils::PkgConfig) >= 1.30.0
+BuildRequires:	perl(ExtUtils::PkgConfig) >= 1.120
 BuildRequires:	perl(Glib) >= 1.240.0
 BuildRequires:	perl(Pango) >= 1.220.0
-BuildRequires:	gtk+2-devel >= %{gtk_require}
+BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	perl-devel
-BuildRequires:	perl-ExtUtils-Depends >= 0.300
-BuildRequires:	perl-ExtUtils-PkgConfig >= 1.03
-BuildRequires:	perl-Glib >= %{perl_glib_require}
-BuildRequires:	perl-Cairo >= %{cairo_require}
-BuildRequires:	perl-Pango >= %{pango_require}
 # for test suite:
 BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	x11-server-xvfb
 Requires:	gtk+2
-Requires:	perl-Glib >= %{perl_glib_require}
+Requires:	perl(Glib)
 #	(misc) needed by /usr/lib/perl5/vendor_perl/5.8.7/i386-linux/Gtk2/Install/Files.pm
-Requires:	perl-Cairo >= %{cairo_require}
-Requires:	perl-Pango >= %{pango_require}
+Requires:	perl(Cairo)
+Requires:	perl(Pango)
 # required to avoid warnings when loading
 Suggests:	canberra-gtk
 # (tv) libegg's code for status icon was merged in gtk+2.9.x:
@@ -75,8 +63,6 @@ This package contains documentation of the Gtk2 module.
 %patch7 -p1 -b .gtk_exit~
 %patch21 -p0 -b .tv~
 %patch23 -p0 -b .except~
-#patch24 -p0 -b .reloc~
-#patch25 -p0 -b .relocfix~
 perl Makefile.PL INSTALLDIRS=vendor
 chmod 755 gtk-demo/*.pl examples/*.pl
 
@@ -105,3 +91,40 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 %{perl_vendorarch}/%{upstream_name}/*.pod
 %{perl_vendorarch}/%{upstream_name}/*/*.pod
 %{perl_vendorarch}/%{upstream_name}/*/*/*.pod
+
+
+%changelog
+* Fri Jun 08 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.244.0-1
++ Revision: 803636
+- regenerate P7
+- filter out all deps from %%{_docdir}
+- drop explicit libgtk+2 dependency
+- don't package examples in both packages
+- filter out perl(Gtk2::ScrolledWindow) as well
+- filter out dependency on perl(Gtk2::HBox)
+- fix %%files
+- clean up spec and drop some ancient conflicts & obsoletes..
+- sync with 1.244-1 from mageia
+
+* Mon Jan 23 2012 Götz Waschk <waschk@mandriva.org> 1.232.0-5
++ Revision: 767041
+- rebuild
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - rebuilt for perl-5.14.2
+    - rebuilt for perl-5.14.x
+
+* Wed Nov 30 2011 Matthew Dawkins <mattydaw@mandriva.org> 1.232.0-2
++ Revision: 735514
+- rebuild for breakage with gtk+2.0
+- removed old obsoletes requires provides conflicts
+- cleaned up spec
+- remove mkrel, BuildRoot, clean section, defattr
+
+* Tue Oct 04 2011 Oden Eriksson <oeriksson@mandriva.com> 1.232.0-1
++ Revision: 702809
+- 1.230
+
+* Tue Oct 04 2011 Oden Eriksson <oeriksson@mandriva.com> 1.230.0-7
++ Revision: 702776
+- rebuilt against libpng-1.5.x
