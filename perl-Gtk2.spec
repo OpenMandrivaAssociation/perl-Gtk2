@@ -48,7 +48,6 @@ several other programs as well.
 %package	doc
 Summary:	Gtk2 documentation
 Group:		Books/Computer books
-BuildArch:	noarch
 
 %description	doc
 This package contains documentation of the Gtk2 module.
@@ -90,6 +89,8 @@ perl Makefile.PL INSTALLDIRS=vendor
 %changelog
 * Wed Dec 26 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.244.0-5
 - rebuild for perl-5.16.2
+- doc subpackage shouldn't be noarch as it's files are located in arch
+  specific paths
 - cleanups
 
 * Fri Jun 08 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.244.0-1
