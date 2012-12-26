@@ -14,12 +14,12 @@ Patch7:		Gtk2-1.244-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch 
 
-BuildRequires:	perl(Cairo) >= 1.0.0
-BuildRequires:	perl(ExtUtils::Depends) >= 0.300.0
+BuildRequires:	perl(Cairo)
+BuildRequires:	perl(ExtUtils::Depends)
 BuildRequires:	perl(ExtUtils::MakeMaker)
-BuildRequires:	perl(ExtUtils::PkgConfig) >= 1.120
-BuildRequires:	perl(Glib) >= 1.240.0
-BuildRequires:	perl(Pango) >= 1.220.0
+BuildRequires:	perl(ExtUtils::PkgConfig)
+BuildRequires:	perl(Glib)
+BuildRequires:	perl(Pango)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	perl-devel
 # for test suite:
@@ -27,10 +27,8 @@ BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	x11-server-xvfb
 Requires:	gtk+2
-Requires:	perl(Glib)
 #	(misc) needed by /usr/lib/perl5/vendor_perl/5.8.7/i386-linux/Gtk2/Install/Files.pm
 Requires:	perl(Cairo)
-Requires:	perl(Pango)
 # required to avoid warnings when loading
 Suggests:	canberra-gtk
 # (tv) libegg's code for status icon was merged in gtk+2.9.x:
