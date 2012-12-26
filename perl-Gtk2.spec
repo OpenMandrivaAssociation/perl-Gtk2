@@ -1,17 +1,15 @@
-%define upstream_name	Gtk2
-%define	upstream_version 1.244
+%define	modname	Gtk2
+%define	modver	1.244
 
-%define Werror_cflags %{nil}
-
-Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
+Name:		perl-%{modname}
+Version:	%{perl_convert_version %{modver}}
 Release:	5
 
 Summary:	Perl module for the gtk+-2.x library
 License:	GPL or Artistic
 Group:		Development/GNOME and GTK+
 Url:		http://gtk2-perl.sf.net/
-Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{modname}-%{modver}.tar.gz
 Patch7:		Gtk2-1.244-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch 
@@ -39,9 +37,6 @@ Suggests:	canberra-gtk
 Provides:	perl-Gtk2-StatusIcon = %{version}-%{release}
 Obsoletes:	perl-Gtk2-StatusIcon <= 0.010
 
-# rpm bug, FIXME!
-%define	__noautoreqfiles	%{_docdir}
-
 %description
 This module provides perl access to the gtk+-2.x library.
 
@@ -59,15 +54,15 @@ BuildArch:	noarch
 This package contains documentation of the Gtk2 module.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -qn %{modname}-%{modver}
 %patch7 -p1 -b .gtk_exit~
 %patch21 -p0 -b .tv~
 %patch23 -p0 -b .except~
-perl Makefile.PL INSTALLDIRS=vendor
 chmod 755 gtk-demo/*.pl examples/*.pl
 
 %build
-%make OPTIMIZE="%{optflags}"
+perl Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
 #xvfb-run %make test
@@ -77,23 +72,26 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 
 %files
 %doc AUTHORS LICENSE META.yml NEWS README TODO
-%{perl_vendorarch}/%{upstream_name}/
-%{perl_vendorarch}/%{upstream_name}.pm
-%exclude %{perl_vendorarch}/%{upstream_name}/*.pod
-%exclude %{perl_vendorarch}/%{upstream_name}/*/*.pod
-%exclude %{perl_vendorarch}/%{upstream_name}/*/*/*.pod
+%{perl_vendorarch}/%{modname}/
+%{perl_vendorarch}/%{modname}.pm
+%exclude %{perl_vendorarch}/%{modname}/*.pod
+%exclude %{perl_vendorarch}/%{modname}/*/*.pod
+%exclude %{perl_vendorarch}/%{modname}/*/*/*.pod
 %{perl_vendorarch}/auto/*
 
 %files doc
 %doc gtk-demo examples
 %{_mandir}/*/*
-%dir %{perl_vendorarch}/%{upstream_name}
-%{perl_vendorarch}/%{upstream_name}/*.pod
-%{perl_vendorarch}/%{upstream_name}/*/*.pod
-%{perl_vendorarch}/%{upstream_name}/*/*/*.pod
-
+%dir %{perl_vendorarch}/%{modname}
+%{perl_vendorarch}/%{modname}/*.pod
+%{perl_vendorarch}/%{modname}/*/*.pod
+%{perl_vendorarch}/%{modname}/*/*/*.pod
 
 %changelog
+* Wed Dec 26 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.244.0-5
+- rebuild for perl-5.16.2
+- cleanups
+
 * Fri Jun 08 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.244.0-1
 + Revision: 803636
 - regenerate P7
