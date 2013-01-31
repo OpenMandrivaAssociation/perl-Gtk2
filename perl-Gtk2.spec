@@ -1,9 +1,9 @@
 %define	modname	Gtk2
-%define	modver	1.244
+%define	modver	1.246
 
 Name:		perl-%{modname}
 Version:	%{perl_convert_version %{modver}}
-Release:	5
+Release:	1
 
 Summary:	Perl module for the gtk+-2.x library
 License:	GPL or Artistic
@@ -43,7 +43,7 @@ interfaces for the X Window System.  GTK+ was originally written for the GIMP
 (GNU Image Manipulation Program) image processing program, but is now used by
 several other programs as well.
 
-%package	doc
+%package doc
 Summary:	Gtk2 documentation
 Group:		Books/Computer books
 
