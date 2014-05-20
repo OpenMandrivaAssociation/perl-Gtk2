@@ -1,14 +1,15 @@
 %define	modname	Gtk2
-%define	modver	1.246
+%define modver 1.247
 
 Summary:	Perl module for the gtk+-2.x library
+
 Name:		perl-%{modname}
-Version:	%{perl_convert_version %{modver}}
-Release:	6
+Version:	%perl_convert_version %{modver}
+Release:	1
 License:	GPLv2 or Artistic
 Group:		Development/GNOME and GTK+
 Url:		http://gtk2-perl.sf.net/
-Source0:	http://prdownloads.sourceforge.net/gtk2-perl/%{modname}-%{modver}.tar.gz
+Source0:	http://sourceforge.net/projects/gtk2-perl/files/%{modname}/%{modver}/%{modname}-%{modver}.tar.gz
 Source1:	perl-Gtk2.rpmlintrc
 Patch7:	Gtk2-1.244-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
@@ -45,6 +46,7 @@ several other programs as well.
 
 %package doc
 Summary:	Gtk2 documentation
+
 Group:		Books/Computer books
 
 %description	doc
@@ -83,4 +85,5 @@ perl Makefile.PL INSTALLDIRS=vendor
 %{perl_vendorarch}/%{modname}/*/*.pod
 %{perl_vendorarch}/%{modname}/*/*/*.pod
 %{_mandir}/man3/*
+
 
