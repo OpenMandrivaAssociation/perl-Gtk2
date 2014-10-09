@@ -71,7 +71,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 
 %files
 %doc AUTHORS LICENSE META.yml NEWS README TODO
-%{perl_vendorarch}/%{modname}/
+%{perl_vendorarch}/%{modname}
 %{perl_vendorarch}/%{modname}.pm
 %exclude %{perl_vendorarch}/%{modname}/*.pod
 %exclude %{perl_vendorarch}/%{modname}/*/*.pod
@@ -80,7 +80,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 
 %files doc
 %doc gtk-demo examples
-%dir %{perl_vendorarch}/%{modname}
 %{perl_vendorarch}/%{modname}/*.pod
 %{perl_vendorarch}/%{modname}/*/*.pod
 %{perl_vendorarch}/%{modname}/*/*/*.pod
