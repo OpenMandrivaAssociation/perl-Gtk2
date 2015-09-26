@@ -1,11 +1,11 @@
 %define	modname	Gtk2
-%define modver 1.247
+%define modver 1.2496
 
 Summary:	Perl module for the gtk+-2.x library
 
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	7
+Release:	1
 License:	GPLv2 or Artistic
 Group:		Development/GNOME and GTK+
 Url:		http://gtk2-perl.sf.net/
