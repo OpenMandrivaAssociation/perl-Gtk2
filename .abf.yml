@@ -1,5 +1,2 @@
-removed_sources:
-  Gtk2-1.246.tar.gz: 1b9e3e0cd0f86587f00005d095f61dd380457fdc
-  Gtk2-1.247.tar.gz: 5848d7fb910c1ce5c50ae77e4daca88134811d02
 sources:
-  Gtk2-1.2496.tar.gz: 9f6fdbb2a3373adbb40e11e2fd54e07b7840acdf
+  Gtk2-1.2497.tar.gz: 57100e434783fc2b353a4b8cce60724d15014bb5
