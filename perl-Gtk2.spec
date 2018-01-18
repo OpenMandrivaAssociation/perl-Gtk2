@@ -1,5 +1,5 @@
 %define	modname	Gtk2
-%define modver 1.2497
+%define modver 1.24992
 
 Summary:	Perl module for the gtk+-2.x library
 
