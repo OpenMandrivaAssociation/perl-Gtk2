@@ -24,6 +24,7 @@ BuildRequires:	perl(Pango)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	perl-devel
 # for test suite:
+BuildRequires:	perl(Test::More)
 BuildRequires:	fontconfig
 BuildRequires:	fonts-ttf-dejavu
 BuildRequires:	x11-server-xvfb
