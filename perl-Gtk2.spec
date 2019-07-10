@@ -5,7 +5,7 @@ Summary:	Perl module for the gtk+-2.x library
 
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	4
+Release:	5
 License:	GPLv2 or Artistic
 Group:		Development/GNOME and GTK+
 Url:		http://gtk2-perl.sf.net/
@@ -62,13 +62,13 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%make
+%make_build
 
 %check
 #xvfb-run %make test
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc AUTHORS LICENSE META.yml NEWS README TODO
