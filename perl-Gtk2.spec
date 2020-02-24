@@ -13,7 +13,8 @@ Source0:	http://sourceforge.net/projects/gtk2-perl/files/%{modname}/%{modver}/%{
 Source1:	perl-Gtk2.rpmlintrc
 Patch7:		Gtk2-1.244-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
-Patch23:	Gtk2-1.023-exception-trapping.patch 
+Patch23:	Gtk2-1.023-exception-trapping.patch
+Patch26:  Gtk2-perl-5.20.diff
 
 BuildRequires:	perl(Cairo)
 BuildRequires:	perl(ExtUtils::Depends)
@@ -59,8 +60,12 @@ This package contains documentation of the Gtk2 module.
 %patch21 -p0 -b .tv~
 %patch23 -p0 -b .except~
 chmod 755 gtk-demo/*.pl examples/*.pl
+# fix build with modules from ./lib/:
+export PERL_USE_UNSAFE_INC=1
 
 %build
+# fix build with modules from ./lib/:
+export PERL_USE_UNSAFE_INC=1
 perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
