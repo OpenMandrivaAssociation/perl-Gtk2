@@ -64,9 +64,6 @@ chmod 755 gtk-demo/*.pl examples/*.pl
 perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
-%check
-#xvfb-run %make test
-
 %install
 %make_install
 
