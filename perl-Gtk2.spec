@@ -8,7 +8,7 @@ Version:	%perl_convert_version %{modver}
 Release:	3
 License:	GPLv2 or Artistic
 Group:		Development/GNOME and GTK+
-Url:		http://gtk2-perl.sf.net/
+Url:		https://gtk2-perl.sf.net/
 Source0:	http://sourceforge.net/projects/gtk2-perl/files/%{modname}/%{modver}/%{modname}-%{modver}.tar.gz
 Source1:	perl-Gtk2.rpmlintrc
 Patch7:		Gtk2-1.244-gtk_exit.patch
