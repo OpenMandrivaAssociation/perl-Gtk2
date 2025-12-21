@@ -16,6 +16,7 @@ Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch
 Patch26:  Gtk2-perl-5.20.diff
 
+BuildRequires:	make
 BuildRequires:	perl(Cairo)
 BuildRequires:	perl(ExtUtils::Depends)
 BuildRequires:	perl(ExtUtils::MakeMaker)
