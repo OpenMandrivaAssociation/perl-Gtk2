@@ -1,5 +1,6 @@
 %define	modname	Gtk2
 %define modver 1.24993
+%global optflags %{optflags} -Wno-error -Wno-implicit-function-declaration
 
 Summary:	Perl module for the gtk+-2.x library
 
