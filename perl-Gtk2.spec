@@ -287,7 +287,8 @@ export PERL_USE_UNSAFE_INC=1
 # fix build with modules from ./lib/:
 export PERL_USE_UNSAFE_INC=1
 perl Makefile.PL INSTALLDIRS=vendor
-%make_build
+# gtk2 is not c23 friendly
+%make_build OPTIMIZE="%{optflags}  -std=gnu17"
 
 %install
 %make_install
