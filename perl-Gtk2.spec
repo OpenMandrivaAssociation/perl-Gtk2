@@ -275,9 +275,9 @@ This package contains documentation of the Gtk2 module.
 
 %prep
 %setup -qn %{modname}-%{modver}
-%patch7 -p1 -b .gtk_exit~
-%patch21 -p0 -b .tv~
-%patch23 -p0 -b .except~
+%patch 7 -p1 -b .gtk_exit~
+%patch 21 -p0 -b .tv~
+%patch 23 -p0 -b .except~
 chmod 755 gtk-demo/*.pl examples/*.pl
 # fix build with modules from ./lib/:
 export PERL_USE_UNSAFE_INC=1
