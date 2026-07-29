@@ -6,7 +6,7 @@ Summary:	Perl module for the gtk+-2.x library
 
 Name:		perl-%{modname}
 Version:	%{modver}
-Release:	6
+Release:	7
 License:	GPLv2 or Artistic
 Group:		Development/GNOME and GTK+
 Url:		https://gtk2-perl.sf.net/
@@ -16,6 +16,7 @@ Patch7:		Gtk2-1.244-gtk_exit.patch
 Patch21:	Gtk2-1.038-xset_input_focus.patch
 Patch23:	Gtk2-1.023-exception-trapping.patch
 Patch26:  Gtk2-perl-5.20.diff
+Patch27:	Gtk2-1.24993-entrybuffer-parsexs.patch
 
 BuildRequires:	make
 BuildRequires:	perl(Cairo)
@@ -279,6 +280,7 @@ This package contains documentation of the Gtk2 module.
 %patch 7 -p1 -b .gtk_exit~
 %patch 21 -p0 -b .tv~
 %patch 23 -p0 -b .except~
+%patch 27 -p1 -b .entrybuf~
 chmod 755 gtk-demo/*.pl examples/*.pl
 # fix build with modules from ./lib/:
 export PERL_USE_UNSAFE_INC=1

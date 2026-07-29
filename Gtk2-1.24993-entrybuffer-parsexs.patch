@@ -1,0 +1,36 @@
+--- Gtk2-1.24993/xs/GtkEntryBuffer.xs	2011-11-27 08:57:26.000000000 +0100
++++ Gtk2-1.24993/xs/GtkEntryBuffer.xs	2026-07-29 02:55:25.507465134 +0200
+@@ -41,16 +41,25 @@
+ =for arg initial_chars (string)
+ =cut
+ GtkEntryBuffer_noinc *
+-gtk_entry_buffer_new (class, const gchar_utf8_length *initial_chars=NULL, gint length(initial_chars))
++gtk_entry_buffer_new (class, ...)
++    PREINIT:
++	SV *initial = &PL_sv_undef;
++	const gchar *chars;
++	STRLEN len;
+     CODE:
+-        if (initial_chars == NULL) {
+-                RETVAL = gtk_entry_buffer_new (NULL, 0);
+-        }
+-        else {
+-                RETVAL = gtk_entry_buffer_new (initial_chars, XSauto_length_of_initial_chars);
+-        }
++	/* ExtUtils::ParseXS rejects default values on args that also use
++	 * length(foo). Handle optional initial text ourselves. */
++	if (items > 1)
++		initial = ST(1);
++	if (!SvOK(initial)) {
++		RETVAL = gtk_entry_buffer_new (NULL, 0);
++	}
++	else {
++		chars = SvPVutf8(initial, len);
++		RETVAL = gtk_entry_buffer_new (chars, -1);
++	}
+     OUTPUT:
+-        RETVAL
++	RETVAL
+ 
+ gsize gtk_entry_buffer_get_bytes (GtkEntryBuffer *buffer);
+ 
